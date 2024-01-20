@@ -6,8 +6,8 @@ namespace piAssignment.Models
 {
 	public class UserInfoRequestModel
 	{
-        public required string Name { get; set; }
-        public required string EmailAddress { get; set; }
+        public string? Name { get; set; }
+        public string? EmailAddress { get; set; }
     }
 
 	public class UserInfoModel

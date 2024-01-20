@@ -11,6 +11,11 @@ namespace piAssignment.EntityModels
 		}
 
 		public DbSet<UserInfoModel> UserInfos { get; set; }
-	}
+
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            optionsBuilder.UseInMemoryDatabase("InMemoryDb");
+        }
+    }
 }
 

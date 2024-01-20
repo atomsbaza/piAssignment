@@ -14,6 +14,10 @@ namespace piAssignment.Repositories
 			_piDbContext = piDbContext;
 		}
 
+        public UserRepository()
+        {
+        }
+
         public async Task<bool> CreateUser(UserInfoRequestModel newUser)
         {
             try
