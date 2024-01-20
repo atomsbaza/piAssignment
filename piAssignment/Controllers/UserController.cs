@@ -86,12 +86,12 @@ namespace piAssignment.Controllers
                 }
 
                 var results = await _userRepository.UpdateUser(id, updateUser);
-                if (results != "successful")
+                if (!results)
                 {
-                    return BadRequest(results);
+                    return BadRequest("Update or Create user not successful");
                 }
 
-                return Ok("Update user successful");
+                return Ok("Update or Create user successful");
             }
             catch(Exception e)
             {

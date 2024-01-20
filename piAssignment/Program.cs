@@ -15,6 +15,14 @@ builder.Services.AddSwaggerGen();
 // Add DbContext configuration
 var connectionString = builder.Configuration.GetConnectionString("piAssignment");
 builder.Services.AddDbContext<piDbContext>(options => options.UseSqlServer(connectionString));
+//if (builder.Environment.IsDevelopment())
+//{
+//    builder.Services.AddDbContext<piDbContext>(options => options.UseInMemoryDatabase("InMemoryDb"));
+//}
+//else
+//{
+//    builder.Services.AddDbContext<piDbContext>(options => options.UseSqlServer(connectionString));
+//}
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 
 var app = builder.Build();
