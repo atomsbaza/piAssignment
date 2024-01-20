@@ -14,10 +14,6 @@ namespace piAssignment.Repositories
 			_piDbContext = piDbContext;
 		}
 
-        public UserRepository()
-        {
-        }
-
         public async Task<bool> CreateUser(UserInfoRequestModel newUser)
         {
             try
@@ -94,21 +90,45 @@ namespace piAssignment.Repositories
             return userInfoList;
         }
 
-        public async Task<string> UpdateUser(int id, UserInfoRequestModel userInfo)
+        public async Task<bool> UpdateUser(int id, UserInfoRequestModel userInfo)
         {
-            var existingUser = await _piDbContext.UserInfos.FirstOrDefaultAsync(f => f.UserId == id);
-            if (existingUser == null)
+            try
             {
-                return "This user not exist";
+                var existingUser = await _piDbContext.UserInfos.FirstOrDefaultAsync(f => f.UserId == id);
+                if (existingUser == null)
+                {
+                    if (userInfo == null)
+                    {
+                        return false;
+                    }
+
+                    var userEntity = new UserInfoModel
+                    {
+                        Name = userInfo.Name,
+                        EmailAddress = userInfo.EmailAddress,
+                        CreatedDate = DateTime.Now,
+                        UpdatedDate = DateTime.Now
+                    };
+
+                    _piDbContext.UserInfos.Add(userEntity);
+                    await _piDbContext.SaveChangesAsync();
+                }
+                else
+                {
+                    existingUser.Name = userInfo.Name;
+                    existingUser.EmailAddress = userInfo.EmailAddress;
+                    existingUser.UpdatedDate = DateTime.Now;
+
+                    await _piDbContext.SaveChangesAsync();
+                }
+
+                return true;
             }
-
-            existingUser.Name = userInfo.Name;
-            existingUser.EmailAddress = userInfo.EmailAddress;
-            existingUser.UpdatedDate = DateTime.Now;
-
-            await _piDbContext.SaveChangesAsync();
-
-            return "successful";
+            catch (Exception e)
+            {
+                return false;
+            }
+          
         }
     }
 }

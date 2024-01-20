@@ -8,7 +8,7 @@ namespace piAssignment.Interface
         Task<UserInfoModel?> GetUserInformationById(int id);
         Task<List<UserInfoModel?>?> GetUserInformationByName(string userName);
         Task<bool> CreateUser(UserInfoRequestModel newUser);
-        Task<string> UpdateUser(int id, UserInfoRequestModel userInfo);
+        Task<bool> UpdateUser(int id, UserInfoRequestModel userInfo);
     }
 }
 

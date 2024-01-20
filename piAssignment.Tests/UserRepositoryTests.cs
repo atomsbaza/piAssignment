@@ -74,7 +74,6 @@ public class UserRepositoryTests
         {
             dbContext.UserInfos.Add(new UserInfoModel
             {
-                UserId = 2,
                 Name = "User1",
                 EmailAddress = "user1@example.com",
                 CreatedDate = DateTime.Now,
@@ -86,7 +85,7 @@ public class UserRepositoryTests
             var result = await userRepository.GetUserInformationById(userId);
 
             Assert.NotNull(result);
-            Assert.AreEqual(userId, result.UserId);
+            Assert.That(result.UserId, Is.EqualTo(userId));
         }
     }
 
@@ -121,7 +120,6 @@ public class UserRepositoryTests
         {
             dbContext.UserInfos.Add(new UserInfoModel
             {
-                UserId = 3,
                 Name = "User1",
                 EmailAddress = "user1@example.com",
                 CreatedDate = DateTime.Now,
@@ -129,8 +127,14 @@ public class UserRepositoryTests
             });
             dbContext.UserInfos.Add(new UserInfoModel
             {
-                UserId = 4,
                 Name = "User2",
+                EmailAddress = "user2@example.com",
+                CreatedDate = DateTime.Now,
+                UpdatedDate = DateTime.Now
+            });
+            dbContext.UserInfos.Add(new UserInfoModel
+            {
+                Name = "Us2",
                 EmailAddress = "user2@example.com",
                 CreatedDate = DateTime.Now,
                 UpdatedDate = DateTime.Now
@@ -142,7 +146,7 @@ public class UserRepositoryTests
 
             Assert.NotNull(result);
             Assert.IsInstanceOf<List<UserInfoModel>>(result);
-            Assert.AreEqual(3, result.Count);
+            Assert.That(result.Count, Is.EqualTo(2));
         }
     }
 
@@ -182,7 +186,7 @@ public class UserRepositoryTests
             var userRepository = new UserRepository(dbContext);
             var result = await userRepository.UpdateUser(userId, userInfo);
 
-            Assert.AreEqual("successful", result);
+            Assert.IsTrue(result);
         }
     }
 
@@ -195,15 +199,12 @@ public class UserRepositoryTests
         using (var dbContext = new piDbContext(options))
         {
             int userId = 10;
-            var userInfo = new UserInfoRequestModel
-            {
-                Name = "Pisit Koolplukpol",
-                EmailAddress = "test@test.com"
-            };
+            UserInfoRequestModel userInfo = new UserInfoRequestModel();
+            userInfo = null;
             var userRepository = new UserRepository(dbContext);
             var result = await userRepository.UpdateUser(userId, userInfo);
 
-            Assert.AreNotEqual("successful", result);
+            Assert.IsFalse(result);
         }
     }
     #endregion
