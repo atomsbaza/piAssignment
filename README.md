@@ -8,7 +8,6 @@
 5. Open Terminal in project and use "dotnet ef database update" to update database
 6. Run project, we can use Swagger UI to test or Run piAssignment.Tests for unit test
 
-==========================================================================================================================================================================================================================================
 
 -- If I have more time what would I do --
 1. Use Docker to containerize the application and database for easy deployment and testing
