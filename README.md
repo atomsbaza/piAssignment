@@ -2,6 +2,7 @@
 ## How to Set Up the Project
 1. Open the terminal use "docker pull mcr.microsoft.com/mssql/server" to pull  mssql
 2. user "docker run -e "ACCEPT_EULA=1" -e "MSSQL_SA_PASSWORD=P@ssw0rd" -e "MSSQL_PID=Developer" -e "MSSQL_USER=SA" -e "MSSQL_DATABASE=piDb" -p 1433:1433 -d --name=sql_server mcr.microsoft.com/mssql/server" to run docker
+   2.1 You can use any database to access your localhost server and create DB with the command on 4.
 3. Connect to mssql with Server: localhost, User name: sa, Password: P@ssw0rd
 4. Run the command below to create the database name "piDb"
    USE master;
