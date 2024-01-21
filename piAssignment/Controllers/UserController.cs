@@ -112,7 +112,7 @@ namespace piAssignment.Controllers
 
                 // Fetch user information from DB
                 var list = await _userRepository.GetUserInformationByName(userName);
-                if (list != null)
+                if (list != null && list.Count > 0)
                 {
                     results.status = true;
                     results.results = list;
