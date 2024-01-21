@@ -6,7 +6,7 @@
 4. Run the command below to create the database name "piDb"
    USE master;
    CREATE DATABASE piDb;
-5. Open Terminal in the project and use "dotnet ef database update" to update the database
+5. Open Terminal in the project and use "dotnet ef database update" to update the database (If have error use "dotnet tool install --global dotnet-ef --version 7.*" then update database again)
 6. Run project, we can use Swagger UI to test or Run piAssignment.Tests for unit test
 
 ## If I had more time what would I do
