@@ -1,4 +1,5 @@
 ﻿using System;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Caching.Distributed;
 using Microsoft.Extensions.Caching.Memory;
@@ -10,6 +11,7 @@ namespace piAssignment.Controllers
 {
     [ApiController]
     [Route("api/User")]
+    //[Authorize] // Open this to use Authentication
     public class UserController : ControllerBase
     {
         private readonly IUserRepository _userRepository;
