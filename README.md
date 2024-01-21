@@ -15,3 +15,5 @@
 2. Try to use message queue => maybe use Kafka
 3. Try to use Authentication because I never use it from scratch so I am not sure what I should do. In this case, I already installed OAuth 2.0(Identity Server 4) but have not successfully used it
 
+## trade-offs and decisions
+1. I use Linq because it easy just connect db then write logic to do task
