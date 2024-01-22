@@ -18,11 +18,11 @@ builder.Services.AddIdentity<ApplicationUser, IdentityRole>()
 
 // IdentityServer4 configuration
 builder.Services.AddIdentityServer()
-    .AddAspNetIdentity<ApplicationUser>() // Replace with your actual identity class
-    .AddInMemoryClients(Config.Clients)  // Configure clients, see step 3
-    .AddInMemoryIdentityResources(Config.IdentityResources)  // Configure identity resources, see step 3
-    .AddInMemoryApiResources(Config.ApiResources) // Configure API resources, see step 3
-    .AddDeveloperSigningCredential(); // For development purposes only, use a real certificate in production
+    .AddAspNetIdentity<ApplicationUser>()
+    .AddInMemoryClients(Config.Clients)
+    .AddInMemoryIdentityResources(Config.IdentityResources)
+    .AddInMemoryApiResources(Config.ApiResources)
+    .AddDeveloperSigningCredential();
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
